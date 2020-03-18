@@ -148,7 +148,7 @@ class mochaPlugin {
       const cmds = myModule.config[testStage] || [];
       cmds.forEach((cmd) => {
         this.serverless.cli.log(`Run command: ${cmd}`);
-        const cmdOut = execSync(cmd);
+        const cmdOut = execSync(cmd, {stdio: 'inherit'});
         if (process.env.SLS_DEBUG) {
           const output = cmdOut.toString();
           this.serverless.cli.log(output);
